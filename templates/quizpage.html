@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <style>
+            .quiz{
+                background: palevioletred;
+                width: 450px;
+                border-radius: 10px;
+                margin: 0 auto;
+                display: table;
+                box-sizing: border-box;
+                padding: 15px 30px 30px;
+               
+                border: 2px solid rgb(27, 160, 212);
+            }
+            button{
+                background-color: white;
+                padding: 10px 30px;
+                border-radius: 16px;
+                border-color: blue;
+            }
+            a{
+                color: red;
+                background-color: transparent;
+                
+            }
+        </style>
+
+    </head>
+    <body bgcolor="grey">
+        <h1>Question {{ quest.end_index }} of  {{count}}</h1>
+        <div class="quiz">
+        {% for i in quest %}
+        
+        <h2>{{i.question}}<br></h2>
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="radio">
+                <label><input type="radio" name="name"  id="option1" value="{{i.option1}}">{{i.option1}} </label> 
+                </div>
+                <div class="radio">
+                <label > <input type="radio" name="name"  id="option2" value="{{i.option2}}">{{i.option2}}</label>
+              </div>
+              <div class="radio">
+                <label ><input type="radio" name="name" id="option3" value="{{i.option3}}">{{i.option3}}</label>
+              </div>
+                <div class="radio">
+                <label ><input type="radio" name="name"  id="option4" value="{{i.option4}}">{{i.option4}} </label>
+            </div>
+            
+            <input type="hidden" value="{{i.ans}}" id="a" name="a">
+            
+            <br><button onclick=""  id="save_ans">submit answer</button>
+        
+    </form>
+
+    {% endfor %}
+    
+    {% if quest.has_next %}
+     <a href="?page={{quest.next_page_number}}"<button>next</button></a>
+    {% else %}
+    <a href="result"><button>submit</button></a>
+    {% endif %}
+</div>
+    <script>
+        /*function ans(a){
+            
+            alert("correct ans is  "+document.getElementById('a').value);
+            alert(document.formName.elements['a'].value);
+        }*/
+        window.onload = initall;
+        var  saveBookButton ;
+        function initall() {
+            
+            saveBookButton=document.getElementById('save_ans')
+            saveBookButton.onclick = save_ans;
+            console.log(saveBookButton)
+        }
+        function save_ans() {
+            anss=document.getElementById('a')
+            console.log(anss)
+            console.log("hii")
+            var ans = document.querySelector( 'input[name="name"]:checked');
+            console.log(ans)
+            
+            alert("correct ans is  "+document.getElementById('a').value);
+            //alert(document.formName.elements['a'].value);
+            var url = '/save_ans?ans='+ans.value
+            var req = new XMLHttpRequest();
+            //req.onreadystatechange = function() {
+            //if (this.readyState == 4 && this.status == 200) {
+    //  alert(req.responseText)
+        //}
+  //};
+           req.open("GET", url, true);
+           req.send();
+        }
+    </script>
+    </body>
+</html>

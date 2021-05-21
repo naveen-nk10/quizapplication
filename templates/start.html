@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            button {
+        width: 15%;
+        height: 5%;
+        background-color: pink;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+            }
+        </style>
+    </head>
+    
+    <body bgcolor="grey">
+        <center>
+        {% for i in data %}
+        
+        <form action="question" method="POST">
+            {% csrf_token %}
+
+        
+        <input type="hidden" name="que" value="{{i.id}}">
+        
+        <button typ="submit">start quiz</button>
+        {% endfor %}
+    </form>
+</center>
+    </body>
+</html>
