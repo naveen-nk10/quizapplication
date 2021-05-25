@@ -91,7 +91,9 @@ DATABASE={
         'NAME':os.path.join(BASE_DIR,'db.sqlite3'),
     }
 }
-
+import dj_database_url
+pros_db=dj_database_url.config(conn_max_age=500)
+DATABASE['default'].update(pros_db)
 
 
 
