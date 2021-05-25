@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'interview_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'clg',
@@ -84,7 +84,16 @@ DATABASES = {
         'HOST':'127.0.0.1',
         'PORT':'3306',
     }
+}'''
+DATABASE={
+    'default':{
+        'ENGINE':'django.db.backends.sqlite3',
+        'NAME':os.path.join.(BASE_DIR,'db.sqlite3'),
+    }
 }
+import dj_database_url
+db_from_env=dj_database_url.config()
+DATABASE['default'].update(db_from_env)
 
 
 
@@ -128,6 +137,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
+STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 EMAIL_HOST='stmp.gmail.com'
 EMAIL_HOST_USER='nk4556138@gmail.com'
 EMAIL_HOST_PASSWORD='naveennk'
