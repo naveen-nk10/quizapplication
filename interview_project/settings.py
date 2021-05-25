@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_URL = '/static/'
+
 EMAIL_HOST='stmp.gmail.com'
 EMAIL_HOST_USER='nk4556138@gmail.com'
 EMAIL_HOST_PASSWORD='naveennk'
