@@ -74,7 +74,7 @@ pyasn1-modules==0.2.8
 PyAutoGUI==0.9.50
 pycparser==2.20
 pycryptodome==3.9.9
-pygame==1.9.6
+
 PyGetWindow==0.0.8
 Pygments==2.6.1
 PyHamcrest==2.0.2
