@@ -125,7 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static')
+]
 EMAIL_HOST='stmp.gmail.com'
 EMAIL_HOST_USER='nk4556138@gmail.com'
 EMAIL_HOST_PASSWORD='naveennk'
